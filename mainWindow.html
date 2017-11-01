@@ -4,9 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Shopping List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   </head>
   <body>
-    <h1>Shopping List</h1>
+    <nav>
+      <div class='nav-wrapper'>
+        <a class="brand-logo center">Shopping List</a>
+      </div>
+    </nav>
+
     <ul></ul>
   </body>
 
@@ -17,21 +23,27 @@ const ul = document.querySelector('ul');
 
 // catch item:add event
 ipcRenderer.on('item:add', function(e, item) {
+  ul.className = 'collection'
   const li = document.createElement('li');
   const itemText = document.createTextNode(item);
   li.appendChild(itemText);
+  li.className = 'collection-item';
   ul.appendChild(li);
 })
 
 // catch item:clear event
 ipcRenderer.on('item:clear', function() {
   ul.innerHTML = '';
+  ul.className = '';
 })
 
 // remove item if double clicked
 ul.addEventListener('dblclick', removeItem);
 function removeItem(e) {
   e.target.remove();
+  if(ul.children.length == 0) {
+    ul.className = '';
+  }
 }
   </script>
 </html>
