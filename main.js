@@ -9,6 +9,9 @@ const {
   ipcMain
 } = electron;
 
+// set environment
+process.env.NODE_ENV = 'production';
+
 let mainWindow;
 let addWindow;
 
