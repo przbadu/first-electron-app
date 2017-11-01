@@ -4,8 +4,11 @@
   "description": "shopping list desktop app",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "author": "przbadu",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.7.9"
+  }
 }
